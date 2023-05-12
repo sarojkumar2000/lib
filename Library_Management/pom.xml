@@ -10,17 +10,15 @@
 	</parent>
 	<groupId>com.Spring-boot</groupId>
 	<artifactId>Webapp</artifactId>
-	<version>0.0.1-SNAPSHOT</version>m
-	<name>Webapp</name>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Library_Management</name>
 	<description>Demo project for Spring Boot</description>
 	
-<Properties >
-    
+<properties>
+    <java.version>11</java.version>
+    <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+</properties>
 
-
-<Maven-jar-plugin.version >3.1.1 </Maven-jar-plugin.version>
-
-</Properties >
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
