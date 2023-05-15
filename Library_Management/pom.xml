@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.Spring-boot</groupId>
-	<artifactId>Webapp</artifactId>
+	<artifactId>Library_Management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Library_Management</name>
 	<description>Demo project for Spring Boot</description>
