@@ -13,14 +13,14 @@
 	rel="stylesheet">
 
 <meta charset="ISO-8859-1">
-<title>All Students</title>
+<title>Student Login</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
 <div class="collapse navbar-collapse">
 			<ul class="navbar-nav">
-			<h1><li class="nav-item"><a href="/" class="btn btn-outline-success	">Home</a></li></h1>	&nbsp;		
-			<h1><li class="nav-item"><a href="/studentslist" class="btn btn-outline-success	">Back</a></li></h1>	
+					
+				
 			</ul>
 			
 		</div>
@@ -29,9 +29,8 @@
 		</ul>
 	</nav>
 	
-	
 	<div class="container">
-	<H1>Books taken by this ${student_id }</H1>
+	<H1>Books taken by you</H1>
 <table class="table">
 			<thead>
 				<tr>
@@ -51,7 +50,7 @@
 
 				<c:forEach items="${books}" var="book">
 					<tr>
-							
+
 						<td>${book.book_id}</td>
 						<td>${book.title }</td>
 						<td>${book.author }</td>
@@ -61,28 +60,24 @@
 
 					</tr>
 
-
+					<c:if test="${not empty errorMessage}">
+    <div class="alert alert-danger">
+        ${errorMessage}
+    </div>
+</c:if>
 
 				</c:forEach>
 
 
 			</tbody>
+		
 
 
 
 		</table>
-		
-		<a href="addBookToStudent?id=${student_id }&book_id=${book.book_id}" class="btn btn-success">Add book</a>
 	
 		</div>
-		
 
-	
 
-	<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-	<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
-
-	<script
-		src="webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css"
 	rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Welcome page</title>
+<title>Students Books</title>
 </head>
 <body>
 		<div class="container">

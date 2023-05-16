@@ -20,13 +20,13 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
 <div class="collapse navbar-collapse">
 			<ul class="navbar-nav">
-			<h1><li class="nav-item"><a href="/" class="btn btn-outline-success	">Home</a></li></h1>	&nbsp;		
+			<h1><li class="nav-item"><a href="/home" class="btn btn-outline-success	">Home</a></li></h1>	&nbsp;		
 			<h1><li class="nav-item"><a href="/userslist" class="btn btn-outline-success	">Back</a></li></h1>		
 			</ul>
 			
 		</div>
 		<ul class="navbar-nav">
-			<li class="nav-item" ><a href="/logout" class="btn btn-outline-success" >Logout</a></li>
+			<li class="nav-item" ><a href="/selectuser" class="btn btn-outline-success" >Logout</a></li>
 		</ul>
 	
 	</nav>

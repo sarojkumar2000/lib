@@ -19,14 +19,14 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
 <div class="collapse navbar-collapse">
 			<ul class="navbar-nav">
-			<h1><li class="nav-item"><a href="/" class="btn btn-outline-success	">Home</a></li></h1>&nbsp;
+			<h1><li class="nav-item"><a href="/home" class="btn btn-outline-success	">Home</a></li></h1>&nbsp;
 			<h1><li class="nav-item"><a href="/bookslist" class="btn btn-outline-success	">Back</a></li></h1>			
 					
 			</ul>
 			
 		</div>
 		<ul class="navbar-nav">
-			<li class="nav-item" ><a href="/logout" class="btn btn-outline-success" >Logout</a></li>
+			<li class="nav-item" ><a href="/selectuser" class="btn btn-outline-success" >Logout</a></li>
 		</ul>
 	
 	</nav>
@@ -34,7 +34,7 @@
 	<div class="container">
 <table class="table">		
 <form:form method="POST" modelAttribute="book">
-			Book id:&nbsp;<form:input type="text" path="book_id" required="required"/><br><br>  
+			  
 			title:&nbsp;<form:input type="text" path="title" required="required"/><br><br>
 			author:&nbsp;<form:input type="text" path="author" required="required"/><br><br>
 			publisher:&nbsp;<form:input type="text" path="publisher" required="required"/><br><br>

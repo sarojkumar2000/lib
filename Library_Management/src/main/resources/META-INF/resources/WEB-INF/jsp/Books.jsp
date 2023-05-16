@@ -13,7 +13,7 @@
 	rel="stylesheet">
 
 <meta charset="ISO-8859-1">
-<title>All Students</title>
+<title>All Books</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
@@ -25,7 +25,7 @@
 			
 		</div>
 	<ul class="navbar-nav">
-			<li class="nav-item" ><a href="/logout" class="btn btn-outline-success" >Logout</a></li>
+			<li class="nav-item" ><a href="/selectuser" class="btn btn-outline-success" >Logout</a></li>
 		</ul>
 	</nav>
 	

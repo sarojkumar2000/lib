@@ -25,7 +25,7 @@
 			
 		</div>
 		<ul class="navbar-nav">
-			<li class="nav-item" ><a href="/logout" class="btn btn-outline-success" >Logout</a></li>
+			<li class="nav-item" ><a href="/selectuser" class="btn btn-outline-success" >Logout</a></li>
 		</ul>
 	
 	</nav>

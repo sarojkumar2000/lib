@@ -8,31 +8,22 @@
 <meta charset="ISO-8859-1">
 <title>Welcome page</title>
 </head>
-<body>
-	<nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
+<body >
+	<div class="container">
+   <div class="row">
+      <div class="col-md-8 mx-auto">
+        	<div class="modal-body">
 	
-		<div class="collapse navbar-collapse">
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="btn btn-success" href="/bookslist">All books</a></li>
-					
-			</ul>
-			&nbsp;&nbsp;&nbsp;
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="btn btn-success" href="/borrow">Borrowed books</a></li>
-			
-			</ul>
-&nbsp;&nbsp;&nbsp;
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="btn btn-success" href="/studentslist">Students list</a></li>
-			
-			</ul>&nbsp;&nbsp;&nbsp;
-			
-		</div>
-		<ul class="navbar-nav">
-			<li class="nav-item" ><a href="/logout" class="btn btn-outline-success" >Logout</a></li>
-		</ul>
+  <h5>Login as</h5>
+  <hr>
+  <p>Admin <a href="login" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Login</a> </p>
+  <hr>
+  <p>student <a href="studentlogin" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Login</a> </p>
+</div>
+      </div>
+   </div>
+</div>
 	
-	</nav>
 
 
 

@@ -12,7 +12,11 @@ public class AppController {
 	@RequestMapping("/")
 	public String allStudents() {
 	
+		return "home";
+	}
+	@RequestMapping("/selectuser")
+	public String UserOrAdmin() {
+	
 		return "login";
 	}
-	
 }
