@@ -20,7 +20,7 @@
 <div class="collapse navbar-collapse">
 			<ul class="navbar-nav">
 			<h1><li class="nav-item"><a href="/" class="btn btn-outline-success	">Home</a></li></h1>	&nbsp;		
-			<h1><li class="nav-item"><a href="/studentslist" class="btn btn-outline-success	">Back</a></li></h1>	
+				
 			</ul>
 			
 		</div>
@@ -56,8 +56,8 @@
 						<td>${book.title }</td>
 						<td>${book.author }</td>
 						<td>${book.publisher }</td>
-						<%-- <td><a href="return?id=${book.book_id }"
-							class="btn btn-warning">Return </a></td> --%>
+						<td><a href="return?book_id=${book.book_id }&studentid=${student_id }"
+							class="btn btn-warning">Return </a></td> 
 
 					</tr>
 

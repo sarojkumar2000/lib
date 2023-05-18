@@ -18,7 +18,7 @@
 			</ul>
 			&nbsp;&nbsp;&nbsp;
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="btn btn-success" href="/borrow">Borrowed books</a></li>
+				<li class="nav-item"><a class="btn btn-success" href="/BorrowedBooks">Borrowed books</a></li>
 			
 			</ul>
 &nbsp;&nbsp;&nbsp;

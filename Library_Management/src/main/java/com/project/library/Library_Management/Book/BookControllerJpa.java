@@ -1,6 +1,7 @@
 package com.project.library.Library_Management.Book;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -127,8 +128,8 @@ public class BookControllerJpa {
 		return "bookstakenbystudent";
 
 	}
-	  @GetMapping("/bookstakenbystudent") public String
-	  getBooksTakenByStudent(ModelMap model,@RequestParam int id) { 
+	  @GetMapping("/bookstakenbystudent") 
+	  public String getBooksTakenByStudent(ModelMap model,@RequestParam int id) { 
 	
 		List<StudentBook> books_taken=sbRepo.findByStudentId(id);
 		System.out.println(books_taken);
@@ -143,11 +144,7 @@ public class BookControllerJpa {
 			   bookList.add(books);
 		  
 		 }	  
-	  int student_id=id;
-	  
-	  
-	  
-	  
+	  int student_id=id;  
 	  
 	  
 	  model.addAttribute("books",bookList);
@@ -155,6 +152,19 @@ public class BookControllerJpa {
 	
 	  
 	  return "bookstakenbystudent"; 
+	  }
+	  
+	  //Borrow
+	  
+	  @GetMapping("/BorrowedBooks") 
+	  public String getBorrwedBooks(ModelMap model) { 
+		  List<StudentBook> books_taken=sbRepo.findAll(); 
+		  model.addAttribute("books_taken", books_taken);
+			 
+	
+			
+	  
+	  return "borrowedBooks"; 
 	  }
 
 	
@@ -174,9 +184,16 @@ public class BookControllerJpa {
 	 
 
 	@RequestMapping("return")
-	public String Return(ModelMap model, @RequestParam int id) {
+	public String Return(ModelMap model, @RequestParam("book_id") int book_id,@RequestParam("studentid") int studentid) {
+		Optional<StudentBook> studentBookOptional = sbRepo.findByStudentIdAndBookId(studentid, book_id);
+		System.out.println(studentBookOptional.get());
+		if (studentBookOptional.isPresent()) {
+	        // Delete the StudentBook entity
+	        sbRepo.delete(studentBookOptional.get());
+	    }
+	
 
-		return "bookstakenbystudent";
+		return "redirect:/bookstakenbystudent?id="+studentid;
 	}
 
 }

@@ -31,9 +31,12 @@
         <br/>
          <input type="submit" class="btn btn-primary"value="Login"  />
          </br>
-           <c:if test="${not empty errorMessage}">
-    <p style="color: red">${errorMessage}</p>
-</c:if>
+         <c:if test="${not empty errorMessage}">
+  			  <div class="alert alert-danger">
+       				 ${errorMessage}
+   				 </div>
+		</c:if>
+           		
         </div>
        
        

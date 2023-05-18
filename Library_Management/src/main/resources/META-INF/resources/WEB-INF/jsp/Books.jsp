@@ -59,8 +59,7 @@
 						<td><a href="update-book?id=${book.book_id }"
 							class="btn btn-warning">Update </a></td>
 						
-						<td><a href="delete-book?id=${book.book_id }"
-							class="btn btn-warning">Delete </a></td>
+						
 					</tr>
 
 

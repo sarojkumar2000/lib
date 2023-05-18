@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 
 <html>
@@ -60,14 +61,9 @@
 
 					</tr>
 
-					<c:if test="${not empty errorMessage}">
-    <div class="alert alert-danger">
-        ${errorMessage}
-    </div>
-</c:if>
+					
 
 				</c:forEach>
-
 
 			</tbody>
 		
@@ -75,6 +71,12 @@
 
 
 		</table>
+		<c:if test="${not empty noBooksMsg}">
+  			  <div class="alert alert-danger">
+       				 ${noBooksMsg}
+   				 </div>
+		</c:if>
+
 	
 		</div>
 

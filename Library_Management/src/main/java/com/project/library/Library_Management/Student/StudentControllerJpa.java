@@ -33,7 +33,7 @@ public StudentControllerJpa(BookRepository bookrepo,StudentService studentServic
 	private BookRepository bookrepo;
 	
 	private StudentBookRepository sbRepo;
-	
+	//Adding New user
 	@RequestMapping(value="/studentlogin",method=RequestMethod.GET)
 	public String studentlogin() {
 		
@@ -48,7 +48,8 @@ public StudentControllerJpa(BookRepository bookrepo,StudentService studentServic
 				
 		for (Student student : allstudents) {
 		    if (student.getId() == id) {
-		    	errorMessage="You have not taken any book.Visit library if you're intrested";
+		    	String noBooksMsg;
+		    	
 		    	List<StudentBook> books_taken=sbRepo.findByStudentId(id); 
 				Book books = null;
 				List<Book> bookList = new ArrayList<>();						
@@ -57,16 +58,18 @@ public StudentControllerJpa(BookRepository bookrepo,StudentService studentServic
 					   bookList.add(books);				  
 				 }	    
 				
-				if (books_taken.isEmpty()) {		
+				if (books_taken.isEmpty()) {	
+					noBooksMsg="You have not taken any book.Visit library if you want to take.";
 					
-					model.addAttribute("errorMessage", errorMessage);
+					System.out.println(noBooksMsg);
+					model.addAttribute("noBooksMsg", noBooksMsg);
 					return "student";
 				}
 				
 				else {
 					model.addAttribute("books",bookList);
 					model.addAttribute("student_id",id);
-		    	return "student";
+					return "student";
 				}
 		        
 		    }
