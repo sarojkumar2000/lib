@@ -29,8 +29,24 @@
 		</ul>
 	
 	</nav>
+	   <div class="col-11 text-center">
+        <input type="text" id="student" name="student" center placeholder="Enter student name">&nbsp;
+<a href="#" class="btn btn-success" onclick="searchstudent()">Search</a>
+
+    </div>
 	
 	
+	<div class="row">
+ 
+</div>
+	        
+<script>
+    function searchstudent() {
+        var student = document.getElementById("student").value;
+        var searchUrl = "/searchStudent?student=" + encodeURIComponent(student);
+        window.location.href = searchUrl;
+    }
+</script>
 	<div class="container">
 	
 <table class="table">
@@ -65,7 +81,11 @@
 
 
 				</c:forEach>
-
+<c:if test="${not empty nostudentMsg}">
+  			  <div class="alert alert-primary">
+       				 ${nostudentMsg}
+   				 </div>
+		</c:if>
 
 			</tbody>
 

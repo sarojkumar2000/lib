@@ -29,6 +29,10 @@
 		</ul>
 	</nav>
 	
+	<div class="col-11 text-center">
+         <input type="text" id="book" name="book" placeholder="Enter book title">&nbsp;
+<a href="#" class="btn btn-success" onclick="searchBooks()">Search</a>
+</div>
 	
 	<div class="container">
 <table class="table">
@@ -73,8 +77,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="text" id="book" name="book" placeholder="Enter book title">&nbsp;
-<a href="#" class="btn btn-success" onclick="searchBooks()">Search</a>
+      
 
 <script>
     function searchBooks() {
