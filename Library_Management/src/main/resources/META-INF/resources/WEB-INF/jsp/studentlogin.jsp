@@ -29,7 +29,8 @@
         <input type="password" class="form-control"id="password" name="password"required />
         
         <br/>
-         <input type="submit" class="btn btn-primary"value="Login"  />
+        <a class="btn btn-primary" href="/selectuser">Back</a>
+         <input type="submit" class="btn btn-primary" value="Login"  />
          </br>
          <c:if test="${not empty errorMessage}">
   			  <div class="alert alert-danger">

@@ -13,13 +13,13 @@
 	rel="stylesheet">
 
 <meta charset="ISO-8859-1">
-<title>All Students</title>
+<title>Add book</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
 <div class="collapse navbar-collapse">
 			<ul class="navbar-nav">
-			<h1><li class="nav-item"><a href="/home" class="btn btn-outline-success	">Home</a></li></h1>&nbsp;
+			<h1><li class="nav-item"><a href="/" class="btn btn-outline-success	">Home</a></li></h1>&nbsp;
 			<h1><li class="nav-item"><a href="/bookslist" class="btn btn-outline-success	">Back</a></li></h1>			
 					
 			</ul>
@@ -30,26 +30,30 @@
 		</ul>
 	
 	</nav>
-<h1>Add new book</h1>
+
 	<div class="container">
-<table class="table">		
+<table class="table">	
+<div class="alert alert-light">
+<h1>Add new book</h1>	
+
 <form:form method="POST" modelAttribute="book">
 			  
-			title:&nbsp;<form:input type="text" path="title" required="required"/><br><br>
-			author:&nbsp;<form:input type="text" path="author" required="required"/><br><br>
-			publisher:&nbsp;<form:input type="text" path="publisher" required="required"/><br><br>
+			Title:&nbsp;<form:input type="text" class="form-control" path="title" required="required"/>
+			Author:&nbsp;<form:input type="text" class="form-control" path="author" required="required"/>
+			Publisher:&nbsp;<form:input type="text" class="form-control" path="publisher" required="required"/>
 			
 			
 			
-			Books Available:&nbsp;<form:input type="text" path="no_of_available" required="required"/> 
+			Books Available:&nbsp;<form:input type="text" class="form-control" path="no_of_available" required="required"/> 
 			
 			<br>
-			<input type="submit">
+			<input type="submit" class="btn btn-primary">
 			
 		</form:form>
 
 		
 </table>
+</div>
 	</div>
 
 	

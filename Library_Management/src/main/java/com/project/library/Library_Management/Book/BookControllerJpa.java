@@ -33,7 +33,7 @@ public class BookControllerJpa {
 	private BookRepository bookrepo;
 	private StudentRepository studentrepo;
 	private StudentBookRepository sbRepo;
-
+	//All book available in library
 	@RequestMapping(value = "/bookslist")
 	public String allBooks(ModelMap model) {
 		List<Book> allbooks = bookrepo.findAll();
@@ -41,11 +41,32 @@ public class BookControllerJpa {
 		model.addAttribute("allbooks", allbooks);
 		return "Books";
 	}
-
+	
+	
+	
+	//Search Book 
+		@RequestMapping("search")
+		public String searchBook(@RequestParam("book") String book,ModelMap model) {
+			List<Book> allbooks = bookrepo.findByTitleContainingIgnoreCase(book);
+			if(allbooks.isEmpty()) {
+				String noBooksMsg="No books available";
+				model.addAttribute("noBooksMsg",noBooksMsg);
+			}
+			model.addAttribute("allbooks",allbooks);
+			
+			
+			
+			
+			return "Books";
+		}
+	
+	
+	
+	//Adding book to library
 	@RequestMapping(value = "/addbook", method = RequestMethod.GET)
 	public String addNewBook(ModelMap model) {
-		Book book = new Book(0, "", "", "", "");
-		model.put("book", book);
+		
+		model.put("book", new Book());
 		return "addbook";
 	}
 
@@ -63,7 +84,10 @@ public class BookControllerJpa {
 		model.addAttribute("allbooks", allbooks);
 		return "Books";
 	}
-
+	
+	
+	
+	//Delete Book
 	@RequestMapping("delete-book")
 	public String deleteBook(ModelMap model, @RequestParam int id) {
 		bookrepo.deleteById(id);
@@ -72,7 +96,12 @@ public class BookControllerJpa {
 
 		return "Books";
 	}
-
+	
+	
+	
+	
+	
+	//Updating Book details
 	@RequestMapping(value = "/update-book", method = RequestMethod.GET)
 	public String showUpdateBookPage(ModelMap model, @RequestParam int id) {
 		Book book = bookrepo.findById(id);
@@ -97,76 +126,150 @@ public class BookControllerJpa {
 		model.addAttribute("allbooks", allbooks);
 		return "Books";
 	}
+	
+	
+	
+	
 
 	// Adding book to individual Student
 
 	@RequestMapping(value = "/addBookToStudent", method = RequestMethod.GET)
 	public String addBookToStudent(ModelMap model, @RequestParam int id) {
 		Student student = studentrepo.findById(id);
-
+		String studentName=student.getName();
 		List<Book> books = bookrepo.findAll();
-
+		
 		model.addAttribute("student", student);
+		model.addAttribute("studentName",studentName);
 		model.addAttribute("books", books);
 
 		return "addBookToStudent";
 	}
-
+	
+	
+	
+	
+	// Add the book to the student's list of books
 	@PostMapping("/addBookToStudent")
 	public String addBookToStudent(ModelMap model, @RequestParam int bookId, @RequestParam int studentId) {
 		Student student = studentrepo.findById(studentId);
 		Book book = bookrepo.findById(bookId);
-
-		// Add the book to the student's list of books
+		
+		
+		
+		
+		
+		
+		
+		List<StudentBook> books_taken=sbRepo.findByStudentId(studentId);
+		Book books = null;
+		List<Book> bookList = new ArrayList<>();	
+		for(StudentBook studentbook:books_taken) { 
+			
+			   books=studentbook.getBook();
+			   bookList.add(books);
+	
+		 }	 
+		
 		student.getBooks().add(book);
-		studentrepo.save(student);
+		
 		int student_id = student.getId();
-		List<Book> books = student.getBooks();
+		List<Book> booksbystudent = student.getBooks();
 		model.addAttribute("student_id", student_id);
-		model.addAttribute("books", books);
+		model.addAttribute("books", booksbystudent);
+		
+		int count = 0;
+		String msg=" ";
+		String studentName=student.getName();
+		
+		for (Book bookcount : bookList) {
+		    if (bookcount.getBook_id() == bookId) {
+		        count++;
+		        if(count>0) {
+		        	msg="This book is already taken by "+student.getName();
+		        	model.addAttribute("msg",msg);
+		        	model.addAttribute("student_id", student_id);
+		        	model.addAttribute("studentName", studentName);
+		    		model.addAttribute("books", booksbystudent);
+		    		return "addBookToStudent";
+		        	//return "redirect:/bookstakenbystudent?id="+studentId;
+		        }
+		    }
+		}
+
+		
+		
+
+		studentrepo.save(student);
+		
+		model.addAttribute("student_id", student_id);
+    	model.addAttribute("studentName", studentName);
+		model.addAttribute("books", booksbystudent);
+		
+		
+		
 
 		return "bookstakenbystudent";
 
 	}
+	
+	
+	
+	
+	
+	//Books taken by Individual student
 	  @GetMapping("/bookstakenbystudent") 
 	  public String getBooksTakenByStudent(ModelMap model,@RequestParam int id) { 
 	
 		List<StudentBook> books_taken=sbRepo.findByStudentId(id);
-		System.out.println(books_taken);
+		List<Student> allstudents= studentrepo.findAll();
+		
 		
 		Book books = null;
-		List<Book> bookList = new ArrayList<>();
-		
-		
-		
-		  for(StudentBook book:books_taken) { 
+		List<Book> bookList = new ArrayList<>();	
+		for(StudentBook book:books_taken) { 
+			
 			   books=book.getBook();
 			   bookList.add(books);
-		  
+	
 		 }	  
-	  int student_id=id;  
+		
+		
+		
+		
+		
+		
+		
+		String studentName=null;
+		//This loop is to get student Name Only
+		for (Student student : allstudents) {
+		    if (student.getId() == id) {
+		    	 studentName=student.getName();		    	
+		    	break;
+		    }
+		}
 	  
 	  
 	  model.addAttribute("books",bookList);
-	  model.addAttribute("student_id",student_id);
+	  model.addAttribute("student_id",id);
+	  model.addAttribute("studentName",studentName);
 	
 	  
 	  return "bookstakenbystudent"; 
 	  }
 	  
-	  //Borrow
+	  //All books taken by students
 	  
 	  @GetMapping("/BorrowedBooks") 
 	  public String getBorrwedBooks(ModelMap model) { 
 		  List<StudentBook> books_taken=sbRepo.findAll(); 
-		  model.addAttribute("books_taken", books_taken);
-			 
+		  model.addAttribute("books_taken", books_taken);	 
 	
-			
-	  
 	  return "borrowedBooks"; 
 	  }
 
+	  
+	  
 	
 	/*
 	 * @GetMapping("/bookstakenbystudent") public String
@@ -181,12 +284,15 @@ public class BookControllerJpa {
 	 * 
 	 * return "bookstakenbystudent"; }
 	 */
+	  
+	  
+	  
 	 
-
+	  //When student returns the book in library
 	@RequestMapping("return")
 	public String Return(ModelMap model, @RequestParam("book_id") int book_id,@RequestParam("studentid") int studentid) {
 		Optional<StudentBook> studentBookOptional = sbRepo.findByStudentIdAndBookId(studentid, book_id);
-		System.out.println(studentBookOptional.get());
+		
 		if (studentBookOptional.isPresent()) {
 	        // Delete the StudentBook entity
 	        sbRepo.delete(studentBookOptional.get());
@@ -195,5 +301,7 @@ public class BookControllerJpa {
 
 		return "redirect:/bookstakenbystudent?id="+studentid;
 	}
+	
+	
 
 }

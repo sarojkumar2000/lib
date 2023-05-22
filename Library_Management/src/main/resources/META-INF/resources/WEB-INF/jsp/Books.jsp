@@ -69,10 +69,29 @@
 
 			</tbody>
 <a href="addbook" class="btn btn-success">Add Book</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="book" name="book" placeholder="Enter book title">&nbsp;
+<a href="#" class="btn btn-success" onclick="searchBooks()">Search</a>
 
+<script>
+    function searchBooks() {
+        var book = document.getElementById("book").value;
+        var searchUrl = "/search?book=" + encodeURIComponent(book);
+        window.location.href = searchUrl;
+    }
+</script>
 
 		</table>
 		</div>
+		<c:if test="${not empty noBooksMsg}">
+  			  <div class="alert alert-primary">
+       				 ${noBooksMsg}
+   				 </div>
+		</c:if>
+		
 
 	
 

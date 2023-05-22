@@ -13,14 +13,14 @@
 	rel="stylesheet">
 
 <meta charset="ISO-8859-1">
-<title>All Students</title>
+<title>Add Book to student</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
 <div class="collapse navbar-collapse">
 			<ul class="navbar-nav">
-			<h1><li class="nav-item"><a href="/" class="btn btn-outline-success	">Home</a></li></h1>			
-					
+			<h1><li class="nav-item"><a href="/" class="btn btn-outline-success	">Home</a></li></h1>	&nbsp;		
+				<h1><li class="nav-item"><a href="bookstakenbystudent?id=${student_id}" class="btn btn-outline-success	">Back</a></li></h1>	
 			</ul>
 			
 		</div>
@@ -29,7 +29,7 @@
 		</ul>
 	
 	</nav>
-<h1>Add book to student</h1>
+<h1>Add book to ${studentName}</h1>
 	<div class="container">
 <table class="table">		
 <form:form method="POST" modelAttribute="book">
@@ -50,11 +50,16 @@
 			<br>
 			<input type="submit"> --%>
 			
-		</form:form>
+		</form:form></br>
+	<c:if test="${not empty msg}">
+  			  <div class="alert alert-danger">
+       				 ${msg}
+   				 </div>
+		</c:if>
 
 		
 </table>
-	</div>
+
 
 	
 

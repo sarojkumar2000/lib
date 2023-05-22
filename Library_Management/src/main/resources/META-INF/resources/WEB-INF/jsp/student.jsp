@@ -14,7 +14,7 @@
 	rel="stylesheet">
 
 <meta charset="ISO-8859-1">
-<title>Student Login</title>
+<title>Home</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
@@ -31,11 +31,12 @@
 	</nav>
 	
 	<div class="container">
-	<H1>Books taken by you</H1>
+	<div class="alert alert-light">
+	<H1>Books taken by ${studentName}</H1>
+	
 <table class="table">
 			<thead>
 				<tr>
-
 					
 					<th>Book Id</th>
 					<th>Book title</th>
@@ -70,9 +71,9 @@
 
 
 
-		</table>
+		</table></div>
 		<c:if test="${not empty noBooksMsg}">
-  			  <div class="alert alert-danger">
+  			  <div class="alert alert-primary">
        				 ${noBooksMsg}
    				 </div>
 		</c:if>

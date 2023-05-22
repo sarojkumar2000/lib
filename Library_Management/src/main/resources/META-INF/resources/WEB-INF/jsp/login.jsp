@@ -6,7 +6,7 @@
 <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css"
 	rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Welcome page</title>
+<title>Select User</title>
 </head>
 <body >
 	<div class="container">
@@ -15,10 +15,12 @@
         	<div class="modal-body">
 	
   <h5>Login as</h5>
+  
+
   <hr>
-  <p>Admin <a href="login" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Login</a> </p>
+  <p>Admin <a href="login" role="button" class="btn btn-primary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Login</a> </p>
   <hr>
-  <p>student <a href="studentlogin" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Login</a> </p>
+  <p>student <a href="studentlogin" role="button" class="btn btn-primary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Login</a> </p>
 </div>
       </div>
    </div>

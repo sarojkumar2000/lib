@@ -24,7 +24,7 @@ public class Book {
     private String title;
     private String author;
     private String publisher;
-    private String no_of_available;
+    private int no_of_available;
     
     @ManyToMany
     @JoinTable(
@@ -41,7 +41,7 @@ public class Book {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
-	public Book(int book_id, String title, String author, String publisher, String no_of_available) {
+	public Book(int book_id, String title, String author, String publisher, int no_of_available) {
 		super();
 		this.book_id = book_id;
 		this.title = title;
@@ -74,10 +74,10 @@ public class Book {
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
-	public String getNo_of_available() {
+	public int getNo_of_available() {
 		return no_of_available;
 	}
-	public void setNo_of_available(String no_of_available) {
+	public void setNo_of_available(int no_of_available) {
 		this.no_of_available = no_of_available;
 	}
 

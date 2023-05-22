@@ -13,15 +13,15 @@
 	rel="stylesheet">
 
 <meta charset="ISO-8859-1">
-<title>All Students</title>
+<title>Add Student</title>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
 <div class="collapse navbar-collapse">
 			<ul class="navbar-nav">
-			<h1><li class="nav-item"><a href="/home" class="btn btn-outline-success	">Home</a></li></h1>	&nbsp;		
-			<h1><li class="nav-item"><a href="/userslist" class="btn btn-outline-success	">Back</a></li></h1>		
+			<h1><li class="nav-item"><a href="/" class="btn btn-outline-success	">Home</a></li></h1>	&nbsp;		
+			<h1><li class="nav-item"><a href="/studentslist" class="btn btn-outline-success	">Back</a></li></h1>		
 			</ul>
 			
 		</div>
@@ -30,20 +30,18 @@
 		</ul>
 	
 	</nav>
-<h1>Add new student</h1>
+
 	<div class="container">
-<table class="table">		
+<table class="table">	
+<div class="alert alert-light">
+	<h1>Add new student</h1>
 <form:form method="POST" modelAttribute="student">
-			Student id:&nbsp;<form:input type="text" path="id" required="required"/><br><br>  
-			name:&nbsp;<form:input type="text" path="name" required="required"/><br><br>
-			course:&nbsp;<form:input type="text" path="course" required="required"/><br><br>
-			Branch:&nbsp;<form:input type="text" path="branch" required="required"/><br><br>
-			
-			
-			
-			
+			Student id:&nbsp;<form:input type="text" class="form-control" path="id" required="required"/>
+			name:&nbsp;<form:input type="text" class="form-control" path="name" required="required"/>
+			course:&nbsp;<form:input type="text" class="form-control" path="course" required="required"/>
+			Branch:&nbsp;<form:input type="text" class="form-control" path="branch" required="required"/>
 			<br>
-			<input type="submit">
+			<input type="submit" class="btn btn-primary">
 			
 		</form:form>
 
@@ -51,10 +49,11 @@
 </table>
 	</div>
 
-	
+</div>
 
 
-	<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
+<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 	<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
 
 	<script

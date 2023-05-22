@@ -13,7 +13,7 @@
 	rel="stylesheet">
 
 <meta charset="ISO-8859-1">
-<title>All Students</title>
+<title>Books taken by ${studentName}</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
@@ -31,7 +31,13 @@
 	
 	
 	<div class="container">
-	<H1>Books taken by this ${student_id }</H1>
+	<div class="alert alert-light">
+	<H1>Books taken by ${studentName }</H1>
+	</div>
+	
+	
+	
+			
 <table class="table">
 			<thead>
 				<tr>
@@ -61,23 +67,22 @@
 
 					</tr>
 
-
-
 				</c:forEach>
 
 
 			</tbody>
 
+	
 
 
 		</table>
 		
+	
+		
 		<a href="addBookToStudent?id=${student_id }&book_id=${book.book_id}" class="btn btn-success">Add book</a>
 	
 		</div>
-		
-
-	
+			
 
 	<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 	<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
