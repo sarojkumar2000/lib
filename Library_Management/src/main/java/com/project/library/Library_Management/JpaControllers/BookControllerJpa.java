@@ -32,7 +32,7 @@ public class BookControllerJpa {
 		this.studentrepo = studentrepo;
 		this.sbRepo = sbRepo;
 	}
-
+	
 	private BookRepository bookrepo;
 	private StudentRepository studentrepo;
 	private StudentBookRepository sbRepo;
@@ -51,7 +51,7 @@ public class BookControllerJpa {
 		model.put("book", new Book());
 		return "addbook";
 	}
-
+	
 	@RequestMapping(value = "/addbook", method = RequestMethod.POST)
 	public String addStudent(ModelMap model, @Valid Book book, BindingResult result) {
 		if (result.hasErrors()) {
@@ -121,12 +121,6 @@ public class BookControllerJpa {
 	public String addBookToStudent(ModelMap model, @RequestParam int bookId, @RequestParam int studentId) {
 		Student student = studentrepo.findById(studentId);
 		Book book = bookrepo.findById(bookId);
-		
-		
-		
-		
-		
-		
 		
 		List<StudentBook> books_taken=sbRepo.findByStudentId(studentId);
 		Book books = null;
@@ -198,11 +192,6 @@ public class BookControllerJpa {
 			   bookList.add(books);
 	
 		 }	  
-		
-		
-		
-		
-		
 		
 		
 		String studentName=null;

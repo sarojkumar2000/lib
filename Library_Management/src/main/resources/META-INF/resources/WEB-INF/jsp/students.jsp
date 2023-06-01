@@ -74,6 +74,7 @@
 						<td>${student.branch}</td>
 						
 						<td><a href="bookstakenbystudent?id=${student.id }" class="btn btn-success">Books taken</a></td>
+						<td><a href="requestTicketList?id=${student.id }" class="btn btn-success">Tickets</a></td>
 						
 
 					</tr>

@@ -29,3 +29,5 @@ values(4,'Suma','CSE','BTECH');
 
 insert into student_book(book_id,student_id)
 values(2,1);
+insert into REQUEST_TICKET (book_id,student_id,request_date,status)
+values(1,1,'2021-12-01 00:00:00	',200);

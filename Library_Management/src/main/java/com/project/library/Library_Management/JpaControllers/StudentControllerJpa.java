@@ -8,14 +8,17 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.library.Library_Management.Entities.Book;
+import com.project.library.Library_Management.Entities.RequestTicket;
 import com.project.library.Library_Management.Entities.Student;
 import com.project.library.Library_Management.Entities.StudentBook;
 import com.project.library.Library_Management.Repositories.BookRepository;
+import com.project.library.Library_Management.Repositories.RequestTicketRepository;
 import com.project.library.Library_Management.Repositories.StudentBookRepository;
 import com.project.library.Library_Management.Repositories.StudentRepository;
 
@@ -25,14 +28,19 @@ import com.project.library.Library_Management.Repositories.StudentRepository;
 public class StudentControllerJpa {
 
 	
-public StudentControllerJpa(BookRepository bookrepo,StudentRepository studentRepo,StudentBookRepository sbRepo) {
+public StudentControllerJpa(RequestTicketRepository ticketRepo,BookRepository bookrepo,StudentRepository studentRepo,StudentBookRepository sbRepo) {
 		super();
 		this.studentRepo=studentRepo;
 		this.sbRepo=sbRepo;
+		this.ticketRepo=ticketRepo;
+		this.bookrepo=bookrepo;
+		
 	}
-
+	private RequestTicketRepository ticketRepo;
 	private StudentRepository studentRepo;
 	private StudentBookRepository sbRepo;
+	private BookRepository bookrepo;
+
 	
 	
 	
@@ -54,8 +62,7 @@ public StudentControllerJpa(BookRepository bookrepo,StudentRepository studentRep
 		    	String noBooksMsg;
 		    	studentName=student.getName();
 		    	List<StudentBook> books_taken=sbRepo.findByStudentId(id); 
-				Book books = null;
-				
+				Book books = null;			
 				
 				List<Book> bookList = new ArrayList<>();						
 				for(StudentBook book:books_taken) { 
@@ -128,10 +135,61 @@ public StudentControllerJpa(BookRepository bookrepo,StudentRepository studentRep
 				model.addAttribute("nostudentMsg",nostudentMsg);
 			}
 			model.addAttribute("allstudents",allstudents);
-			
-			
-			
+		
 			
 			return "students";
+		}
+		
+		 @GetMapping("/requestTicketList") 
+		  public String getBooksTakenByStudent(ModelMap model,@RequestParam int id) { 
+			 List<RequestTicket> tickets = ticketRepo.findByStudentId(id);
+			 if(tickets.isEmpty()) {
+				 model.addAttribute("msg","NO requests");
+			 }
+			 
+			 model.addAttribute("id",id);
+			 model.addAttribute("tickets",tickets);
+		  
+		  return "requestTicketList"; 
+		  }
+		 //Adding requested book by student
+		 @RequestMapping(value="/addRequestedBook",method=RequestMethod.GET)	 
+		 public String addRequestedBook(ModelMap model,@RequestParam("id") int id ,@RequestParam("book_id") int book_id) {
+			 Student student = studentRepo.findById(id);
+			 Book book = bookrepo.findById(book_id);
+			 List<StudentBook> books_taken=sbRepo.findByStudentId(id);//books taken by particular student Student_Book table
+			 Book books = null;
+			 List<Book> bookList = new ArrayList<>();
+			 for(StudentBook studentbook:books_taken) { 
+					
+				   books=studentbook.getBook();
+				   bookList.add(books);
+		
+			 }	 
+			//Line 171 and 172 is the logic to add book to particulaer student 
+			 student.getBooks().add(book);
+			 List<Book> booksbystudent = student.getBooks();
+			 
+			 model.addAttribute("id",id);
+			 model.addAttribute("booksbystudent",booksbystudent);
+			 //This loop checks if student has already taken this Requested book in student_book table
+			 int count = 0;
+				String msg="";
+				for (Book bookcount : bookList) {
+				    if (bookcount.getBook_id() == book_id) {
+				        count++;
+				        if(count>0) {
+				        	
+				        	msg="This book is already taken by "+student.getName();
+				        	model.addAttribute("msg",msg);
+				        	return "redirect:/requestTicketList?id="+id;
+				        }
+				    }
+				}
+				//This Saves to Student_Book Table
+				studentRepo.save(student);
+				ticketRepo.deleteByBookId(book_id);
+			 
+			return "addingRequested"; 
 		}
 }

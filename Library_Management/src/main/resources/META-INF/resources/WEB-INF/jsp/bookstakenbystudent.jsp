@@ -69,18 +69,10 @@
 
 				</c:forEach>
 
-
-			</tbody>
-
-	
-
-
+		</tbody>
 		</table>
-		
-	
-		
 		<a href="addBookToStudent?id=${student_id }&book_id=${book.book_id}" class="btn btn-success">Add book</a>
-	
+		<a href="requestTicketList?id=${student_id}" class="btn btn-success">Tickets</a>		
 		</div>
 			
 

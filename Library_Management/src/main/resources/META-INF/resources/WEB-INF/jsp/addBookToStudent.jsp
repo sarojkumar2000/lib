@@ -20,7 +20,7 @@
 <div class="collapse navbar-collapse">
 			<ul class="navbar-nav">
 			<h1><li class="nav-item"><a href="/" class="btn btn-outline-success	">Home</a></li></h1>	&nbsp;		
-				<h1><li class="nav-item"><a href="bookstakenbystudent?id=${student_id}" class="btn btn-outline-success	">Back</a></li></h1>	
+				<h1><li class="nav-item"><a href="bookstakenbystudent?id=${student.id}" class="btn btn-outline-success	">Back</a></li></h1>	
 			</ul>
 			
 		</div>

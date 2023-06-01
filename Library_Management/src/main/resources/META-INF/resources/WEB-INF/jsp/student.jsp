@@ -78,9 +78,9 @@
    				 </div>
 		</c:if>
 
-	
+	<a href="/request-tickets/create" class="btn btn-outline-success" >Raise request to add</a>
 		</div>
-
+		
 
 </body>
 </html>
