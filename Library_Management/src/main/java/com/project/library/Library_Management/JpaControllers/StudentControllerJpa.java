@@ -139,7 +139,7 @@ public StudentControllerJpa(RequestTicketRepository ticketRepo,BookRepository bo
 			
 			return "students";
 		}
-		
+		//This is will return the tickets raised by particular student(id)
 		 @GetMapping("/requestTicketList") 
 		  public String getBooksTakenByStudent(ModelMap model,@RequestParam int id) { 
 			 List<RequestTicket> tickets = ticketRepo.findByStudentId(id);

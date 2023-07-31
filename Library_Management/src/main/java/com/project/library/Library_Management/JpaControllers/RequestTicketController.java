@@ -52,7 +52,7 @@ public class RequestTicketController {
 	                requestEntity,
 	                RequestTicket.class
 	        );
-	        RequestTicket ticket = requestEntity.getBody(); // Get the RequestTicket from the RequestEntity
+	        RequestTicket ticket = requestEntity.getBody(); // Gets the RequestTicket from the RequestEntity
 	      ticketRepo.save(ticket);
 	      
 	        
